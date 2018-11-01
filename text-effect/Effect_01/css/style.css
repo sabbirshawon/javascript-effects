@@ -1,7 +1,13 @@
+body {
+  background-color:#6F4E37;
+  margin:0 auto;
+}
+
 .ml9 {
   position: relative;
   font-weight: 200;
   font-size: 4em;
+  text-align: center;
 }
 
 .ml9 .text-wrapper {
