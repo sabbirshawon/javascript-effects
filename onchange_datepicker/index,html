@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <title>DatePicker</title>
+    </head>
+    <body>
+                   
+        <div class="container">
+        <!-- Content here -->
+            <div class="row">
+                <div class="col col-sm"></div>
+                <div class="col col-sm">
+                   
+                    <div class="input-group-addon cal-icon">
+                        <span class="fa fa-calendar checkin-cal"></span>
+                    </div>
+
+                    <form action="">
+                        <div class="form-group">
+                            <label class="check_in_label">Check In</label>
+                            <input type="text" id="checkin" class="form-control validate[required] datepicker c_heckin" title="Check-in" placeholder="Check-in" name="checkin" autocomplete="off" required/>
+                            
+                            <div class="input-group-addon cal-icon">
+                                <span class="fa fa-calendar checkin-cal"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="check_out_label">Check Out</label>
+                            <input type="text" id="checkout" class="form-control validate[required] datepicker c_heckout" title="Check-out" placeholder="Check-out" name="checkout" autocomplete="off" required/>
+                            <div class="input-group-addon cal-icon">
+                                <span class="fa fa-calendar checkout-cal"></span>
+                            </div>
+                        </div>
+                      </form>
+                </div>
+                <div class="col col-sm"></div>
+            </div>
+        </div>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#checkin").datepicker({
+                    dateFormat: "dd-M-yy",
+                    minDate: 0
+                });
+            
+                $('.checkin-cal').click(function() {
+                    $("#checkin").focus();
+                });
+            });
+            
+            
+            $(document).ready(function () {
+                $("#checkout").datepicker({
+                    dateFormat: "dd-M-yy",
+                    minDate: 0
+                });
+            
+                $('.checkout-cal').click(function() {
+                    $("#checkout").focus();
+                });
+            });
+
+
+            $(".c_heckin").datepicker({
+                dateFormat: "dd-M-yy",
+                minDate: "dateToday",
+                onClose: function (selectedDate) {
+                    var myDate = $(this).datepicker('getDate'); 
+                        myDate.setDate(myDate.getDate()+1); 
+                    $('.c_heckout').datepicker('setDate', myDate);
+                }
+            });
+        </script>
+    
+    </body>
+</html>
